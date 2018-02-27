@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
+        <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+        <link type="text/css" rel="stylesheet" href="style.css">
+        
+        <title>Pig Game</title>
+    </head>
+
+    <body>
+        <div class="wrapper clearfix">
+            <div class="player-0-panel active">
+                <div class="player-name" id="name-0">Player 1</div>
+                <div class="player-score" id="score-0">0</div>
+                <div class="bottom-box">
+                    <div class="player-current-box">
+                        <div class="player-current-label">Current</div>
+                        <div class="player-current-score" id="current-0">0</div>
+                    </div>
+                    <div class="prev-dice-box-0">
+                        <img src="dice-6.png" alt="Previous dice" class="prev-dice-0">
+                        <div class="prev-dice-text">Previous Roll</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="player-1-panel">
+                <div class="player-name" id="name-1">Player 2</div>
+                <div class="player-score" id="score-1">0</div>
+                <div class="bottom-box">
+                    <div class="player-current-box">
+                        <div class="player-current-label">Current</div>
+                        <div class="player-current-score" id="current-1">0</div>
+                    </div>
+                    <div class="prev-dice-box-1">
+                        <img src="dice-6.png" alt="Previous dice" class="prev-dice-1">
+                        <div class="prev-dice-text">Previous Roll</div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn-new"><i class="ion-ios-plus-outline"></i>New game</button>
+            <button class="btn-roll"><i class="ion-ios-loop"></i>Roll dice</button>
+            <button class="btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
+            <button class="btn-score-to-win"></button>
+            
+            <img src="dice-5.png" alt="Dice" class="dice">
+        </div>
+        <div class="popup-container">
+            <div class="game-start-popup">
+                <p class="welcome">Welcome to PIG!</p>
+                <p class="welcome-text">How many points do you want to play to?</p>
+                <input id="start-score" type="number" placeholder="100" value="100"/>
+                <input id="start-button" type="button" value="START" OnClick="getScore()" />
+                <div class="slideout">
+                    Game Rules
+                    <div class="slideout-tab">
+                        <p class="game-rules-title">GAME RULES:</p>
+                        <ul class="game-rules">
+                            <li class="rule">The game has 2 players, playing in rounds</li>
+                            <li class="rule">In each turn, a player rolls a dice as many times as they whish. Each result gets added to their <b>ROUND</b> score</li>
+                            <li class="rule">BUT, if the player rolls a 1, all their ROUND score gets lost. After that, it's the next player's turn</li>
+                            <li class="rule">If the player rolls two 6s in a row, their GLOBAL score is lost, and it is the the next player's turn</li>
+                            <li class="rule">The player can choose to 'Hold', which means that their ROUND score gets added to their GLBAL score. After that, it's the next player's turn</li>
+                            <li class="rule">The first player to reach the total points on the GLOBAL score wins the game</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>

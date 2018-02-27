@@ -1,0 +1,304 @@
+/**********************************************
+*** GENERAL
+**********************************************/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+body {
+    background-image: linear-gradient(to top left, grey, black);
+    background-size: cover;
+    background-position: center;
+    font-family: Lato;
+    font-weight: 300;
+    position: relative;
+    height: 100vh;
+    color: #555;
+}
+
+.wrapper {
+    width: 1000px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+}
+
+.player-0-panel,
+.player-1-panel {
+    width: 50%;
+    float: left;
+    height: 600px;
+    padding: 100px;
+    position: relative;
+}
+
+
+
+/**********************************************
+*** PLAYERS
+**********************************************/
+
+.player-name {
+    font-size: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 100;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.player-score {
+    text-align: center;
+    font-size: 80px;
+    font-weight: 100;
+    color: #EB4D4D;
+    margin-bottom: 130px;
+}
+
+.active { background-color: #f7f7f7; }
+.active .player-name { font-weight: 300; }
+
+.active .player-name::after {
+    content: "\2022";
+    font-size: 47px;
+    position: absolute;
+    color: #EB4D4D;
+    top: -7px;
+    right: 10px;
+    
+}
+
+.player-current-box {
+    background-color: #EB4D4D;
+    color: #fff;
+    width: 40%;
+    margin: 0 auto;
+    padding: 12px;
+    text-align: center;
+}
+
+.player-current-label {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #222;
+}
+
+.player-current-score {
+    font-size: 30px;
+}
+
+button {
+    position: absolute;
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #555;
+    background: none;
+    border: none;
+    font-family: Lato;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 300;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover { font-weight: 600; }
+button:hover i { margin-right: 20px; }
+
+button:focus {
+    outline: none;
+}
+
+i {
+    color: #EB4D4D;
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 32px;
+    line-height: 1;
+    vertical-align: text-top;
+    margin-top: -4px;
+    transition: margin 0.3s;
+}
+
+.btn-new { top: 550px; }
+.btn-roll { top: 350px; font-size: 25px;}
+.btn-hold { top: 408px; font-size: 25px;}
+.btn-score-to-win { top: 45px; font-weight: 600; cursor: default;}
+
+.dice {
+    position: absolute;
+    left: 50%;
+    top: 178px;
+    transform: translateX(-50%);
+    height: 100px;
+    border-radius: 5px;
+    box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.40);
+}
+
+.bottom-box {
+    position: relative;
+}
+
+.prev-dice-box-0, .prev-dice-box-1 {
+    padding: 12px;
+    width: 40%;
+    margin: 0 auto;
+    background-color: rgb(207, 206, 206);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.prev-dice-0, .prev-dice-1 {
+    margin: 0 auto;
+    height: 50px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+}
+
+.prev-dice-text {
+    text-transform: uppercase;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.winner { background-color: #f7f7f7; }
+.winner .player-name { font-weight: 300; color: #EB4D4D; }
+
+.popup-container {
+    display: none;
+    position: relative;
+    z-index: 100;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-size: cover;
+    background-position: center;
+}
+
+.game-start-popup {
+    z-index: 101;
+    position: absolute;
+    height: 200px;
+    width: 400px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+/* .slideout {width:100px; height:50px; position:fixed; background-color:blue; margin-top:30px;} */
+
+
+.slideout {
+    position: relative;
+    height: 22px;
+    padding: 5px;
+    width: 100px;
+    background-color: rgb(255, 255, 255);
+    color: #000;
+    top: 10%;
+    z-index: 99;
+    cursor: pointer;
+}
+
+.slideout:hover .slideout-tab {display:block}
+.slideout-tab {width:650px; height:230px; position: relative; background-color:rgb(255, 255, 255); display:none; transform: translateX(-42%); z-index: 98; margin-top: 10px; padding: 10px;}
+
+
+
+p.game-rules-title {
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.rule {
+    font-size: 14px;
+}
+
+.rule:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+#start-score {
+    display: inline-block;
+    font-size: 20px;
+    margin: 20px auto;
+    width: 150px;
+    height: 30px;
+    border-radius: 3px;
+    background-color: rgb(231, 231, 231);
+    color: red;
+    border: none;
+    text-align: center;
+    transform-origin: 50% 100%;
+}
+
+#start-score:focus {
+    outline: none;
+    width: 155px;
+    transition: all .2s;
+}
+
+#start-score::placeholder {
+    color: rgb(197, 197, 197);
+}
+
+#start-score:focus::placeholder {
+    color: rgb(216, 216, 216);
+}
+
+#start-button {
+    width: 90px;
+    height: 40px;
+    border-radius: 100px;
+    background-image: linear-gradient(to left, red, rgb(153, 0, 0));
+    outline: none;
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    transition: all .2s;
+}
+
+#start-button:hover {
+    font-size: 14px;
+    width: 100px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+#start-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.welcome {
+    font-size: 24px;
+    font-weight: 600;
+}
